@@ -8,11 +8,14 @@ This plugin implements Scrum roles as specialized AI agents:
 
 | Agent | Role | Responsibilities |
 |-------|------|------------------|
-| **Scrum Master** | Orchestrator | Manages sprint, delegates tasks, ensures quality gate |
-| **Product Owner** | Planner | Creates backlog, defines acceptance criteria |
+| **Product Owner** | Orchestrator | Manages backlog, coordinates team, interfaces with stakeholders |
+| **Tech Lead** | Architect | System design, task breakdown, complex problems |
 | **Dev-Frontend** | Worker | Implements UI/React/CSS code |
 | **Dev-Backend** | Worker | Implements API/database/logic |
+| **DevOps Engineer** | Worker | Infrastructure, CI/CD, deployment |
+| **UI/UX Designer** | Worker | Design decisions, user experience |
 | **QA Engineer** | Verifier | Tests and verifies completed work |
+| **Technical Writer** | Documenter | Creates sprint docs, reviews, retrospectives |
 
 ## Installation
 
@@ -34,10 +37,10 @@ Add to your `opencode.json`:
 
 ## Usage
 
-Start OpenCode with the Scrum Master agent:
+Start OpenCode with the Product Owner agent:
 
 ```bash
-opencode --agent scrum-master
+opencode --agent product-owner
 ```
 
 Or switch to it during a session by pressing `Tab` to cycle agents.
@@ -47,39 +50,44 @@ Or switch to it during a session by pressing `Tab` to cycle agents.
 ```
 You: Add a user authentication system
 
-Scrum Master: I'll coordinate this sprint. Let me have the Product Owner break this down.
+Product Owner: I'll coordinate this. Let me consult with Tech Lead on feasibility.
 
-[Delegates to Product Owner]
+[Delegates to Tech Lead]
 
-Product Owner: Created sprint backlog:
+Tech Lead: Created sprint backlog:
 1. [Backend] Create User model and auth endpoints
 2. [Backend] Add JWT token generation
 3. [Frontend] Create LoginForm component
 4. [Frontend] Add auth context and protected routes
-5. [QA] Verify login/logout flow
 
-Scrum Master: Starting sprint. Dev-Backend, please work on item #1.
+Product Owner: Starting sprint. Dev-Backend, please work on item #1.
 
 [Delegates to Dev-Backend]
 
 Dev-Backend: Implemented User model and POST /api/auth endpoints.
 
-Scrum Master: QA, please verify item #1.
+Product Owner: QA, please verify item #1.
 
 [Delegates to QA Engineer]
 
 QA Engineer: Task #1 VERIFIED. Tests pass, endpoints return correct responses.
 
-Scrum Master: Item #1 complete. Moving to item #2...
+Product Owner: Item #1 complete. Moving to item #2...
 ```
 
 ## Custom Tools
 
 The plugin provides Scrum-specific tools:
 
+### Backlog & Progress
 - `scrum-sprint-backlog` - View backlog with status summary
 - `scrum-burndown` - Generate ASCII burndown chart
 - `scrum-daily-standup` - Generate standup summary
+
+### Ceremonies
+- `sprint-planning` - Start sprint planning ceremony
+- `sprint-review` - Start sprint review ceremony
+- `standup` - Run daily standup
 
 ## Configuration
 
@@ -88,7 +96,7 @@ Override agent settings in your `opencode.json`:
 ```json
 {
   "agent": {
-    "scrum-master": {
+    "product-owner": {
       "model": "anthropic/claude-sonnet-4-20250514"
     }
   }
