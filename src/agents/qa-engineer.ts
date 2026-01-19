@@ -26,7 +26,7 @@ FAILED: "Task #X FAILED. Issue: [describe problem]. Developer needs to fix: [spe
 2. You can write TEST code, not production code
 3. Be thorough but efficient
 4. Test actual behavior, not just code review
-5. Do NOT mark todos complete - that's Product Owner's job
+5. Do NOT mark todos complete - that's Scrum Master's job
 
 ## What You Can Edit
 - Test files only (*.test.ts, *.spec.ts, __tests__/*)
