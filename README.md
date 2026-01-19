@@ -4,22 +4,63 @@ A Scrum-focused multi-agent orchestration plugin for [OpenCode](https://opencode
 
 ## Overview
 
-This plugin implements Scrum roles as specialized AI agents:
+This plugin implements Scrum methodology with specialized AI agents:
 
 | Agent | Role | Responsibilities |
 |-------|------|------------------|
-| **Product Owner** | Orchestrator | Manages backlog, coordinates team, interfaces with stakeholders |
-| **Tech Lead** | Architect | System design, task breakdown, complex problems |
-| **Dev-Frontend** | Worker | Implements UI/React/CSS code |
-| **Dev-Backend** | Worker | Implements API/database/logic |
-| **DevOps Engineer** | Worker | Infrastructure, CI/CD, deployment |
-| **UI/UX Designer** | Worker | Design decisions, user experience |
+| **Scrum Orchestrator** | Your contact | Gathers requirements, runs sprints, presents results |
+| **Tech Lead** | Architect | System design, task breakdown |
+| **Dev-Frontend** | Developer | Implements UI/React/CSS code |
+| **Dev-Backend** | Developer | Implements API/database/logic |
+| **DevOps Engineer** | Developer | Infrastructure, CI/CD, deployment |
+| **UI/UX Designer** | Designer | Design decisions, styling, accessibility |
 | **QA Engineer** | Verifier | Tests and verifies completed work |
-| **Technical Writer** | Documenter | Creates sprint docs, reviews, retrospectives |
+| **Technical Writer** | Documenter | Creates sprint docs and guides |
+
+## How It Works
+
+You talk to the **Scrum Orchestrator**. That's it. The orchestrator:
+
+1. **Gathers your requirements** - Asks clarifying questions
+2. **Creates user stories** - Translates your needs into backlog items
+3. **Runs sprints autonomously** - Delegates to specialists, ensures QA
+4. **Presents results** - Shows you what was built in business terms
+
+```
+You: Build me a todo app with dark mode
+
+Orchestrator: I'll help you build that. A few questions:
+- Should todos persist after refresh?
+- Any specific styling preferences?
+
+You: Yes persist them, use a minimal dark theme
+
+Orchestrator: Got it. Here's the plan:
+- Todo CRUD with local storage
+- Dark minimal UI
+Ready to start?
+
+You: Yes
+
+Orchestrator: Sprint started. I'll update you when complete.
+
+[Works autonomously...]
+
+Orchestrator: Done! Your todo app is ready:
+- Add/edit/delete todos ✓
+- Data persists in localStorage ✓
+- Dark minimal theme ✓
+
+Try it out and let me know if you'd like any changes.
+```
 
 ## Installation
 
-### From npm (when published)
+### From npm
+
+```bash
+npm install opencode-scrum
+```
 
 Add to your `opencode.json`:
 
@@ -32,62 +73,31 @@ Add to your `opencode.json`:
 ### Local Development
 
 1. Clone this repository
-2. Place in `.opencode/plugin/` directory of your project
+2. Place in `.opencode/plugin/` directory
 3. Or link globally to `~/.config/opencode/plugin/`
 
 ## Usage
 
-Start OpenCode with the Product Owner agent:
+Start OpenCode with the Scrum Orchestrator:
 
 ```bash
-opencode --agent product-owner
+opencode --agent scrum-orchestrator
 ```
 
-Or switch to it during a session by pressing `Tab` to cycle agents.
+Or press `Tab` to cycle agents during a session.
 
-### Workflow Example
-
-```
-You: Add a user authentication system
-
-Product Owner: I'll coordinate this. Let me consult with Tech Lead on feasibility.
-
-[Delegates to Tech Lead]
-
-Tech Lead: Created sprint backlog:
-1. [Backend] Create User model and auth endpoints
-2. [Backend] Add JWT token generation
-3. [Frontend] Create LoginForm component
-4. [Frontend] Add auth context and protected routes
-
-Product Owner: Starting sprint. Dev-Backend, please work on item #1.
-
-[Delegates to Dev-Backend]
-
-Dev-Backend: Implemented User model and POST /api/auth endpoints.
-
-Product Owner: QA, please verify item #1.
-
-[Delegates to QA Engineer]
-
-QA Engineer: Task #1 VERIFIED. Tests pass, endpoints return correct responses.
-
-Product Owner: Item #1 complete. Moving to item #2...
-```
-
-## Custom Tools
+## Tools
 
 The plugin provides Scrum-specific tools:
 
-### Backlog & Progress
-- `scrum-sprint-backlog` - View backlog with status summary
-- `scrum-burndown` - Generate ASCII burndown chart
-- `scrum-daily-standup` - Generate standup summary
-
-### Ceremonies
-- `sprint-planning` - Start sprint planning ceremony
-- `sprint-review` - Start sprint review ceremony
-- `standup` - Run daily standup
+| Tool | Description |
+|------|-------------|
+| `scrum-sprint-backlog` | View backlog with status summary |
+| `scrum-burndown` | Generate ASCII burndown chart |
+| `scrum-daily-standup` | Generate standup summary |
+| `sprint-planning` | Start planning ceremony |
+| `sprint-review` | Start review ceremony |
+| `standup` | Quick standup check |
 
 ## Configuration
 
@@ -96,7 +106,7 @@ Override agent settings in your `opencode.json`:
 ```json
 {
   "agent": {
-    "product-owner": {
+    "scrum-orchestrator": {
       "model": "anthropic/claude-sonnet-4-20250514"
     }
   }

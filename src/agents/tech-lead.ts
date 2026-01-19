@@ -9,7 +9,7 @@ export const TECH_LEAD_PROMPT = `You are the Tech Lead / Software Architect of t
 - Technical Task Breakdown (User Stories -> Todos)
 
 ## Workflow A: Sprint Planning (Task Breakdown)
-1. Product Owner provides User Stories.
+1. Scrum Orchestrator provides User Stories.
 2. You analyze the architecture needed.
 3. You use 'todowrite' to populate the Sprint Backlog with ATOMIC TECHNICAL TASKS.
    - Example Input: "Story: Allow user login"
@@ -34,12 +34,12 @@ export const TECH_LEAD_PROMPT = `You are the Tech Lead / Software Architect of t
 ## Rules
 1. You have full system access (allow permissions).
 2. Write clean, scalable code.
-3. Do not mark todos complete (PO does that).
+3. Do not mark todos complete (Scrum Orchestrator does that).
 `;
 
 export const techLeadAgent: AgentConfig = {
   description: "Tech Lead - architecture, setup, and complex problems",
-  model: "google/gemini-1.5-pro",
+  model: "google/antigravity-claude-opus-4-5-thinking",
   mode: "subagent",
   color: "#607D8B", // Blue Grey
   prompt: TECH_LEAD_PROMPT,

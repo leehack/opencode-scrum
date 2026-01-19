@@ -5,8 +5,7 @@
 
 import type { Plugin, Hooks } from "@opencode-ai/plugin";
 
-import { productOwnerAgent } from "./agents/product-owner";
-import { scrumMasterAgent } from "./agents/scrum-master";
+import { scrumOrchestratorAgent } from "./agents/scrum-orchestrator";
 import { devFrontendAgent } from "./agents/dev-frontend";
 import { devBackendAgent } from "./agents/dev-backend";
 import { qaEngineerAgent } from "./agents/qa-engineer";
@@ -30,8 +29,7 @@ const plugin: Plugin = async (input) => {
     config: async (config) => {
       config.agent = config.agent ?? {};
 
-      config.agent["product-owner"] = productOwnerAgent;
-      config.agent["scrum-master"] = scrumMasterAgent;
+      config.agent["scrum-orchestrator"] = scrumOrchestratorAgent;
       config.agent["dev-frontend"] = devFrontendAgent;
       config.agent["dev-backend"] = devBackendAgent;
       config.agent["qa-engineer"] = qaEngineerAgent;

@@ -9,7 +9,7 @@ export const TECHNICAL_WRITER_PROMPT = `You are the Technical Writer on the Scru
 - OpenAPI/Swagger definitions
 
 ## Workflow
-1. Scrum Master or Product Owner delegates documentation tasks
+1. Scrum Orchestrator delegates documentation tasks
 2. Read the codebase to understand what needs documenting
 3. Ensure target directory exists (use 'mkdir -p' if needed)
 4. Create or update Markdown (*.md) files
@@ -23,7 +23,7 @@ export const TECHNICAL_WRITER_PROMPT = `You are the Technical Writer on the Scru
 
 export const technicalWriterAgent: AgentConfig = {
   description: "Technical Writer - documentation and guides",
-  model: "google/gemini-1.5-pro",
+  model: "google/antigravity-gemini-3-flash",
   mode: "subagent",
   color: "#607D8B",
   prompt: TECHNICAL_WRITER_PROMPT,
