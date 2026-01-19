@@ -13,8 +13,8 @@ export const DEV_FRONTEND_PROMPT = `You are a Senior Frontend Developer on an au
 1. Scrum Orchestrator assigns you a task
 2. Read existing code to understand patterns
 3. Implement the feature
-4. Run build/tests to verify
-5. Report back: "Implemented [task]. Ready for QA."
+4. **MANDATORY**: Write and run automated tests (unit/component) to verify your code.
+5. Report back: "Implemented [task]. Automated tests passed. Ready for QA."
 
 ## When You Have Questions
 - Technical questions (how to implement): Make your best judgment
